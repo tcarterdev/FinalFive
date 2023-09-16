@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770e7476535602942b41427b440767ea, type: 3}
+  m_Name: Glock
+  m_EditorClassIdentifier: 
+  name: Glock-27
+  damage: 15
+  maxDistance: 400
+  gunShotFX: {fileID: 8300000, guid: 168da7f14f8c114489f39672a08cd38d, type: 3}
+  gunReload: {fileID: 8300000, guid: b5b8a2016058d234590192ad8da25c59, type: 3}
+  currentAmmo: 10
+  magSize: 10
+  fireRate: 250
+  reloadTime: 1.5
+  reloading: 0
