@@ -18,8 +18,8 @@ MonoBehaviour:
   bulletForce: 35
   gunShotFX: {fileID: 8300000, guid: fbbc4510280017840b20a5749974628c, type: 3}
   gunReload: {fileID: 8300000, guid: b5f8a25bc3744a24195c61d82133daee, type: 3}
-  currentAmmo: 18
+  currentAmmo: 4
   magSize: 30
   fireRate: 600
-  reloadTime: 2
+  reloadTime: 2.3
   reloading: 0
