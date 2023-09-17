@@ -1,6 +1,8 @@
 // Some stupid rigidbody based movement by Dani
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -25,9 +27,9 @@ public class PlayerMovement : MonoBehaviour
     private float sensMultiplier = 1f;
 
     //Movement
+    [Header("Movement and Stamina")]
     public float moveSpeed = 4500;
     public float maxSpeed = 20;
-    public float sprintMultiplier = 1.5f;
     public bool grounded;
     public LayerMask whatIsGround;
 
@@ -94,6 +96,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftControl))
             StopCrouch();
     }
+
+
+    
+
+ 
 
     private void StartCrouch()
     {
@@ -311,5 +318,4 @@ public class PlayerMovement : MonoBehaviour
     {
         grounded = false;
     }
-
 }

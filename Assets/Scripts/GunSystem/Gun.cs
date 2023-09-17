@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
         //DIsplay Current Weapon Name
         gunNameUI.SetText(gunData.name);
 
-
+        gunAnimator.SetTrigger("Idle");
 
         //Set Hitmarker to Invisible
         hitmarkerUI.color = CLEARWHITE;
@@ -48,6 +48,11 @@ public class Gun : MonoBehaviour
     }
 
     private void OnDisable() => gunData.reloading = false;
+
+    private void OnEnable()
+    {
+        gunAnimator.SetTrigger("Idle");
+    }
 
     public void StartReload()
     {
