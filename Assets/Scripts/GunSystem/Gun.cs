@@ -106,6 +106,7 @@ public class Gun : MonoBehaviour
                 if (Physics.Raycast(gunFirepoint.position, gunFirepoint.forward, out RaycastHit hitInfo, gunData.maxDistance))
                 {
                     TrailRenderer trail = Instantiate(bulletTrail, gunFirepoint.position, Quaternion.identity);
+                    gunAudioSource.pitch = Random.Range(0.8f, 1f);
                     gunAudioSource.PlayOneShot(gunData.gunShotFX, 0.5f);
                     StartCoroutine(SpawnTrail(trail, hitInfo));
                     Debug.Log(hitInfo.transform.name);
