@@ -11,6 +11,7 @@ public class GunData : ScriptableObject
     [Header("Shooting")]
     public float damage;
     public float maxDistance;
+    public float bulletForce;
     public AudioClip gunShotFX;
     public AudioClip gunReload;
 

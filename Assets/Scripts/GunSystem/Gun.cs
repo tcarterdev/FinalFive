@@ -33,8 +33,7 @@ public class Gun : MonoBehaviour
         gunData.reloading = false;
         gunData.currentAmmo = gunData.magSize;
 
-        //DIsplay Current Weapon Name
-        gunNameUI.SetText(gunData.name);
+        
 
         gunAnimator.SetTrigger("Idle");
 
@@ -52,6 +51,9 @@ public class Gun : MonoBehaviour
     private void OnEnable()
     {
         gunAnimator.SetTrigger("Idle");
+
+        //DIsplay Current Weapon Name
+        gunNameUI.SetText(gunData.name);
     }
 
     public void StartReload()
@@ -125,6 +127,7 @@ public class Gun : MonoBehaviour
                 timeSinceLastShot = 0;
                 OnGunShot();
                 gunAnimator.SetTrigger("FireEnd");
+                gunAnimator.SetTrigger("Idle");
             }
         }
 
