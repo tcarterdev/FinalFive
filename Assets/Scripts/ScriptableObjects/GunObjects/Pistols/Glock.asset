@@ -15,9 +15,10 @@ MonoBehaviour:
   name: Glock-27
   damage: 15
   maxDistance: 400
+  bulletForce: 15
   gunShotFX: {fileID: 8300000, guid: 1edad51ae5bdb044e8d11170a80fc1e4, type: 3}
-  gunReload: {fileID: 8300000, guid: b5b8a2016058d234590192ad8da25c59, type: 3}
-  currentAmmo: 10
+  gunReload: {fileID: 8300000, guid: 0a5d14d7a91ef6b419bbd5f70673fb74, type: 3}
+  currentAmmo: 9
   magSize: 10
   fireRate: 250
   reloadTime: 1.5
