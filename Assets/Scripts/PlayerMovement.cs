@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerScale;
     public float slideForce = 400;
     public float slideCounterMovement = 0.2f;
+    public bool isSliding;
 
     //Jumping
     private bool readyToJump = true;
@@ -59,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
     }
 
     void Start()
@@ -110,8 +112,19 @@ public class PlayerMovement : MonoBehaviour
         {
             if (grounded)
             {
+                isSliding = true;
                 rb.AddForce(orientation.transform.forward * slideForce);
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Rigidbody enemyRB = GetComponent<Rigidbody>();
+
+            enemyRB.AddForce(orientation.transform.forward, ForceMode.Impulse);
         }
     }
 
@@ -119,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.localScale = playerScale;
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        isSliding = false;
     }
 
     private void Movement()

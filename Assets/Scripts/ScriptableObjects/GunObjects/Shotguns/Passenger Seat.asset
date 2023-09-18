@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 50
   maxDistance: 20
   bulletForce: 150
-  gunShotFX: {fileID: 8300000, guid: 70d64dc934dcc194ea8477b0cb518f8e, type: 3}
+  gunShotFX: {fileID: 8300000, guid: 3681275c14cd2d24ca18fcd717555dd2, type: 3}
   gunReload: {fileID: 8300000, guid: f5f6e63f29fde82439e23eb9f7cbfd15, type: 3}
   currentAmmo: 0
   magSize: 2

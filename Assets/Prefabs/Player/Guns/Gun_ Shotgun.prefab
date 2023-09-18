@@ -192,7 +192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3462524299600129382}
-  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.62, y: -0.25, z: 1.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -217,10 +217,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunData: {fileID: 11400000, guid: 134118cd9b4c05a4980f930521540108, type: 2}
   gunFirepoint: {fileID: 6196592574205245764}
-  bulletTrail: {fileID: 7680419242163574711, guid: 1175775bd68075240a4ecb699946d98a, type: 3}
+  bulletTrail: {fileID: 7680419242163574711, guid: ead0d44baee8a414ea2a3bc8591ca33e, type: 3}
   gunAnimator: {fileID: 4271254325443082194}
   gunAudioSource: {fileID: 4271254325443082193}
-  hitmarkerFX: {fileID: 8300000, guid: 14d297fe583c2e94eb0d58aabfbd267e, type: 3}
+  hitmarkerFX: {fileID: 8300000, guid: 95b3fb917cb74d441b15c9e97de5872b, type: 3}
   ammoCountUI: {fileID: 6196592575289909137}
   gunNameUI: {fileID: 6196592575590825801}
   hitmarkerUI: {fileID: 0}
@@ -236,7 +236,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -616,7 +616,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6196592575590825812}
   m_LocalRotation: {x: 0.34659806, y: -0, z: -0, w: 0.93801373}
-  m_LocalPosition: {x: 0, y: 0, z: 24.7}
+  m_LocalPosition: {x: 0, y: 0, z: 19.2}
   m_LocalScale: {x: -0.607064, y: -0.607064, z: -0.607064}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -625,7 +625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 40.559, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -35.4}
+  m_AnchoredPosition: {x: 0, y: -41.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6196592575590825800
@@ -667,8 +667,8 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_enableVertexGradient: 1
+  m_colorMode: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}

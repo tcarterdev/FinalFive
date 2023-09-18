@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GameManager : MonoBehaviour
     public float timeLeft;
     public bool timerOn = false;
     public TMP_Text timerText;
+
+    [Header("Debugging")]
+    public KeyCode resetScene;
+    
 
     private void Start()
     {
@@ -29,6 +34,11 @@ public class GameManager : MonoBehaviour
                 timeLeft = 0;
                 timerOn = false;
             }
+        }
+
+        if (Input.GetKeyDown(resetScene))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

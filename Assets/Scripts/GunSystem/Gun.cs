@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private GunData gunData;
     [SerializeField] private Transform gunFirepoint;
     [SerializeField] private TrailRenderer bulletTrail;
+    private static Gun gun;
 
     [Header("Animations")]
     [SerializeField] private Animator gunAnimator;
@@ -33,8 +34,6 @@ public class Gun : MonoBehaviour
         gunData.reloading = false;
         gunData.currentAmmo = gunData.magSize;
 
-        
-
         gunAnimator.SetTrigger("Idle");
 
         //Set Hitmarker to Invisible
@@ -46,13 +45,18 @@ public class Gun : MonoBehaviour
         PlayerShoot.reloadInput += StartReload;
     }
 
+    public void Awake()
+    {
+    }
+
+
     private void OnDisable() => gunData.reloading = false;
 
     private void OnEnable()
     {
         gunAnimator.SetTrigger("Idle");
-
-        //DIsplay Current Weapon Name
+        gunAnimator.enabled = true;
+        //Display Current Weapon Name
         gunNameUI.SetText(gunData.name);
     }
 
