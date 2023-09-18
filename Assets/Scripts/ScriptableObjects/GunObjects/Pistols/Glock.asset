@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770e7476535602942b41427b440767ea, type: 3}
   m_Name: Glock
   m_EditorClassIdentifier: 
-  name: Keep Hush
+  name: Hush..
   damage: 15
   maxDistance: 400
   bulletForce: 15
   gunShotFX: {fileID: 8300000, guid: 1edad51ae5bdb044e8d11170a80fc1e4, type: 3}
-  gunReload: {fileID: 8300000, guid: 0a5d14d7a91ef6b419bbd5f70673fb74, type: 3}
+  gunReloadFX: {fileID: 8300000, guid: 0a5d14d7a91ef6b419bbd5f70673fb74, type: 3}
+  gunReadyFX: {fileID: 8300000, guid: 7938c5dc6a744b44194ac9a95f4b5cb3, type: 3}
   currentAmmo: 10
   magSize: 10
   fireRate: 250

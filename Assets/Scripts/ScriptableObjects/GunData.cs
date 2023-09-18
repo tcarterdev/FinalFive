@@ -12,9 +12,11 @@ public class GunData : ScriptableObject
     public float damage;
     public float maxDistance;
     public float bulletForce;
+    [Header("Audio")]
     public AudioClip gunShotFX;
-    public AudioClip gunReload;
-
+    public AudioClip gunReloadFX;
+    public AudioClip gunReadyFX;
+    
     [Header("Reloading")]
     public int currentAmmo;
     public int magSize;

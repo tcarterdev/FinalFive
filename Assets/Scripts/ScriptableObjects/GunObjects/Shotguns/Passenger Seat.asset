@@ -17,8 +17,9 @@ MonoBehaviour:
   maxDistance: 20
   bulletForce: 150
   gunShotFX: {fileID: 8300000, guid: 3681275c14cd2d24ca18fcd717555dd2, type: 3}
-  gunReload: {fileID: 8300000, guid: f5f6e63f29fde82439e23eb9f7cbfd15, type: 3}
-  currentAmmo: 0
+  gunReloadFX: {fileID: 8300000, guid: f5f6e63f29fde82439e23eb9f7cbfd15, type: 3}
+  gunReadyFX: {fileID: 8300000, guid: e4427f260cadb164dba505a6b6795bbd, type: 3}
+  currentAmmo: 2
   magSize: 2
   fireRate: 100
   reloadTime: 3

@@ -55,6 +55,7 @@ public class Gun : MonoBehaviour
     private void OnEnable()
     {
         gunAnimator.SetTrigger("Idle");
+        gunAudioSource.PlayOneShot(gunData.gunReadyFX, 0.5f);
         gunAnimator.enabled = true;
         //Display Current Weapon Name
         gunNameUI.SetText(gunData.name);
@@ -72,7 +73,7 @@ public class Gun : MonoBehaviour
     {
         gunData.reloading = true;
         gunAnimator.SetBool("IsReloading", true);
-        gunAudioSource.PlayOneShot(gunData.gunReload, 0.5f);
+        gunAudioSource.PlayOneShot(gunData.gunReloadFX, 0.5f);
         yield return new WaitForSeconds(gunData.reloadTime);
 
         gunData.currentAmmo = gunData.magSize;
