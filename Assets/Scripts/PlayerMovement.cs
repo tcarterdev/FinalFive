@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     //Assingables
+    [Header("Transforms and Orientation")]
     public Transform playerCam;
     public Transform orientation;
 
@@ -16,12 +17,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     //Audio
+    [Header("Audio")]
     public AudioClip[] footStepsFX;
     public AudioSource playerAudioSource;
     public float stepRate = 0.5f;
     public float stepCooldown;
 
     //Rotation and look
+    [Header("Rotation and Look")]
     private float xRotation;
     private float sensitivity = 50f;
     private float sensMultiplier = 1f;
@@ -120,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (isSliding && (collision.gameObject.CompareTag("Enemy")))
         {
             Rigidbody enemyRB = GetComponent<Rigidbody>();
 

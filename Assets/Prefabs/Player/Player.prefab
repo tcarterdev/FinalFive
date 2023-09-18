@@ -1170,6 +1170,7 @@ GameObject:
   - component: {fileID: 911208408}
   - component: {fileID: 911208409}
   - component: {fileID: 2145855057}
+  - component: {fileID: 1176717911092740469}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1471,6 +1472,20 @@ MonoBehaviour:
   wallRunfovTime: 20
   camTilt: 20
   camTiltTime: 20
+--- !u!114 &1176717911092740469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867455297946576922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19086047678c2145bd2a4903b7686b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
 --- !u!1 &3867455297989739833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,7 +1620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cfuStatus: PSXEffects v1.18.4 - version ahead?!
   sections: 01010100
-  customRes: {x: 546, y: 253}
+  customRes: {x: 581, y: 268}
   resolutionFactor: 2
   limitFramerate: -1
   skipFrames: 0
@@ -1761,7 +1776,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 2
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1794,7 +1809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cfuStatus: PSXEffects v1.18.4 - version ahead?!
   sections: 01010100
-  customRes: {x: 546, y: 253}
+  customRes: {x: 581, y: 268}
   resolutionFactor: 2
   limitFramerate: -1
   skipFrames: 0
