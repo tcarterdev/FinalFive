@@ -13,6 +13,7 @@ public class EnemyData : ScriptableObject
     public bool isMelee;
     public float damage;
     public float attackRadius;
+    public float timeBetweenAttack;
     public float attackSpeed;
     public float attackForce;
     public float detectionRadius;

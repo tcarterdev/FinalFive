@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-
-    private Transform Player;
+    [SerializeField] private EnemyData enemyData;
+    public Transform Player;
     private float distance;
     public float howClose;
     public float bulletForce, fireRate, timeofLastShot;
     public Transform head, barrelFirepoint;
     public GameObject projectile;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
 
     // Update is called once per frame
     void Update()
@@ -38,7 +32,7 @@ public class Turret : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = Instantiate(projectile, barrelFirepoint.position, transform.rotation);
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletForce);
+        bullet.GetComponent<Rigidbody>().AddForce(Player.transform.position * bulletForce);
         Destroy(bullet, 3);
 
     }
