@@ -115,14 +115,19 @@ public class Gun : MonoBehaviour
             if (CanShoot())
             {
                 gunAnimator.SetTrigger("Fire");
+
+                //Muzzle Flash
+                GameObject muzzleflash = Instantiate(gunData.muzzleFlash, gunFirepoint, worldPositionStays: false);
+                Destroy(muzzleflash, 0.1f);
                 TrailRenderer trail = Instantiate(bulletTrail, gunFirepoint.position, Quaternion.identity);
                 gunAudioSource.pitch = Random.Range(0.8f, 1f);
                 gunAudioSource.PlayOneShot(gunData.gunShotFX, 0.5f);
-                
+
                 if (Physics.Raycast(gunFirepoint.position, gunFirepoint.forward, out RaycastHit hitInfo, gunData.maxDistance))
                 {
+                    //Spawn Trail
                     StartCoroutine(SpawnTrail(trail, hitInfo));
-                    Debug.Log(hitInfo.transform.name);
+                    //take damage
                     IDamageable damageable = hitInfo.transform.GetComponent<IDamageable>();
                     damageable?.TakeDamage(gunData.damage);
 

@@ -16,6 +16,9 @@ public class GunData : ScriptableObject
     public AudioClip gunShotFX;
     public AudioClip gunReloadFX;
     public AudioClip gunReadyFX;
+
+    [Header("VFX")]
+    public GameObject muzzleFlash;
     
     [Header("Reloading")]
     public int currentAmmo;

@@ -19,7 +19,8 @@ MonoBehaviour:
   gunShotFX: {fileID: 8300000, guid: fbbc4510280017840b20a5749974628c, type: 3}
   gunReloadFX: {fileID: 8300000, guid: b5f8a25bc3744a24195c61d82133daee, type: 3}
   gunReadyFX: {fileID: 8300000, guid: 66053f859c7723b488c8c5b18e6c0b99, type: 3}
-  currentAmmo: 29
+  muzzleFlash: {fileID: 100008, guid: b11531b8eca86ad43a1931bd652b0c61, type: 3}
+  currentAmmo: 17
   magSize: 30
   fireRate: 600
   reloadTime: 2.3
