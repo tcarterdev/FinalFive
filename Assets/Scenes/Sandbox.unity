@@ -12037,7 +12037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3242547442860902561, guid: 7acdb9c082056954bbf07e701053d19a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.426
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3867455296839392792, guid: 7acdb9c082056954bbf07e701053d19a, type: 3}
       propertyPath: hitmarkerUI
