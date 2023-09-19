@@ -12,7 +12,8 @@ public class EnemyData : ScriptableObject
     public bool isRanged;
     public bool isMelee;
     public float damage;
-    public float attackRange;
+    public float attackRadius;
+    public float attackSpeed;
     public float attackForce;
     public float detectionRadius;
 
@@ -20,6 +21,10 @@ public class EnemyData : ScriptableObject
     public AudioClip enemyIdleFX;
     public AudioClip enemyAttack;
     public AudioClip enemyDeathFX;
+
+    [Header("Particles")]
+    public ParticleSystem takeDamageVFX;
+    public ParticleSystem deathVFX;
 
 
 

@@ -1,6 +1,8 @@
 using Newtonsoft.Json.Bson;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -28,14 +30,26 @@ public class AIMovement : MonoBehaviour
         if (distance <= enemyData.detectionRadius)
         {
             agent.SetDestination(target.position);
-        }
-        
 
-        animator.SetBool("IsMoving", true);
+            animator.SetBool("IsMoving", true);
+            animator.SetBool("IsIdle", false);
+            agent.isStopped = false;
+        }
+        else
+        {
+            agent.isStopped = true;
+            
+            animator.SetBool("IsIdle", true);
+            animator.SetBool("IsMoving", false);
+            
+        }   
+
+
     }
 
     private void OnDrawGizmos()
     {
+        //Debug: Detection Radius
         Gizmos.DrawWireSphere(this.gameObject.transform.position ,enemyData.detectionRadius);
     }
 }
