@@ -50,11 +50,18 @@ public class Gun : MonoBehaviour
     }
 
 
-    private void OnDisable() => gunData.reloading = false;
+    private void OnDisable()
+    {
+        gunData.reloading = false;
+        gunAnimator.keepAnimatorControllerStateOnDisable = true;
+        gunAnimator.SetTrigger("Idle");
+        gunAnimator.SetBool("IsReloading", false);
+        gunAnimator.SetTrigger("FireEnd");
+    }
 
     private void OnEnable()
     {
-        gunAnimator.SetTrigger("Idle");
+        
         gunAudioSource.PlayOneShot(gunData.gunReadyFX, 0.5f);
         gunAnimator.enabled = true;
         //Display Current Weapon Name
