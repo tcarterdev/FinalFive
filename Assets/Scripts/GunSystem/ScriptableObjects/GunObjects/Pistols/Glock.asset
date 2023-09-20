@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Glock
   m_EditorClassIdentifier: 
   name: Hush..
-  damage: 15
-  maxDistance: 400
+  weaponType: Pistol
+  damage: 20
+  maxDistance: 100
   bulletForce: 15
   gunShotFX: {fileID: 8300000, guid: 1edad51ae5bdb044e8d11170a80fc1e4, type: 3}
   gunReloadFX: {fileID: 8300000, guid: 0a5d14d7a91ef6b419bbd5f70673fb74, type: 3}
   gunReadyFX: {fileID: 8300000, guid: 7938c5dc6a744b44194ac9a95f4b5cb3, type: 3}
   muzzleFlash: {fileID: 100006, guid: 4e7bc0a8b112c984fb16cf716888808f, type: 3}
-  currentAmmo: 5
+  currentAmmo: 9
   magSize: 10
   fireRate: 250
   reloadTime: 1.5

@@ -18,11 +18,11 @@ public class AICore : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     public Transform target;
     [SerializeField] private Health enemyHealth;
-    [SerializeField] private PlayerStats playerStats;
-
+    [SerializeField] private PlayerStats playerStat;
 
     [Header("Parameters")]
     private float distance;
+
 
 
 
@@ -30,36 +30,49 @@ public class AICore : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        playerStats = FindObjectOfType<PlayerStats>().GetComponent<PlayerStats>();
+        playerStat = FindObjectOfType<PlayerStats>().GetComponent<PlayerStats>();
+    }
+
+    private void Start()
+    {
+
+
+
     }
 
     void Update()
     {        
+
+        if (agent.isStopped == true)
+        {
+            animator.SetBool("IsIdle", true);
+            animator.SetBool("IsMoving", false);
+        }
+
         MoveToPlayer();
     }
 
     private void MoveToPlayer()
     {
         distance = Vector3.Distance(target.position, transform.position);
-        this.gameObject.transform.LookAt(target);
+
         //if player is within detection raduius move to player.
         if (distance <= enemyData.detectionRadius)
         {
+            this.gameObject.transform.LookAt(target);
             agent.SetDestination(target.position);
             animator.SetBool("IsMoving", true);
             animator.SetBool("IsIdle", false);
             agent.isStopped = false;
         }
-        //if not then dont move.
         else
         {
             agent.isStopped = true;
-
-            animator.SetBool("IsIdle", true);
-            animator.SetBool("IsMoving", false);
-
         }
+        
     }
+
+   
 
     public void AttackPlayer()
     {

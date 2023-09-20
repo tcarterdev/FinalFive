@@ -25,6 +25,9 @@ public class Gun : MonoBehaviour
     [HideInInspector] private float hitmarkerTimer = 0.5f;
     private Color CLEARWHITE = new Color(1, 1, 1, 0);
 
+    [Header("Gun VFX")]
+    [SerializeField] private GameObject enemyHitVFX;
+
     float timeSinceLastShot;
 
     public void Start()
@@ -54,8 +57,8 @@ public class Gun : MonoBehaviour
     {
         gunData.reloading = false;
         gunAnimator.keepAnimatorControllerStateOnDisable = true;
-        gunAnimator.SetTrigger("Idle");
-        gunAnimator.SetBool("IsReloading", false);
+        
+        gunAnimator.SetBool("isReloading", false);
         gunAnimator.SetTrigger("FireEnd");
     }
 
@@ -79,14 +82,18 @@ public class Gun : MonoBehaviour
     private IEnumerator Reload()
     {
         gunData.reloading = true;
-        gunAnimator.SetBool("IsReloading", true);
+        gunAnimator.SetBool("isReloading", true);
         gunAudioSource.PlayOneShot(gunData.gunReloadFX, 0.5f);
         yield return new WaitForSeconds(gunData.reloadTime);
 
         gunData.currentAmmo = gunData.magSize;
 
         gunData.reloading = false;
-        gunAnimator.SetBool("IsReloading", false);
+        gunAnimator.SetBool("isReloading", false);
+    }
+    private void StunEnemy()
+    {
+        
     }
 
     private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit Hit)
@@ -120,9 +127,12 @@ public class Gun : MonoBehaviour
                 GameObject muzzleflash = Instantiate(gunData.muzzleFlash, gunFirepoint, worldPositionStays: false);
                 Destroy(muzzleflash, 0.1f);
                 TrailRenderer trail = Instantiate(bulletTrail, gunFirepoint.position, Quaternion.identity);
+                Destroy(trail, 1f);
                 gunAudioSource.pitch = Random.Range(0.8f, 1f);
                 gunAudioSource.PlayOneShot(gunData.gunShotFX, 0.5f);
 
+                
+                
                 if (Physics.Raycast(gunFirepoint.position, gunFirepoint.forward, out RaycastHit hitInfo, gunData.maxDistance))
                 {
                     //Spawn Trail
@@ -138,8 +148,11 @@ public class Gun : MonoBehaviour
                         gunAudioSource.PlayOneShot(hitmarkerFX, 1f);
                         hitmarkerTimer = 0.5f;
 
-
+                        GameObject bloodSpray = Instantiate(enemyHitVFX, hitInfo.point, Quaternion.identity);
+                        Destroy(bloodSpray, 0.2f);
                     }
+
+                    
                     
                 }
                 gunData.currentAmmo--;
@@ -147,6 +160,7 @@ public class Gun : MonoBehaviour
                 OnGunShot();
                 gunAnimator.SetTrigger("FireEnd");
                 gunAnimator.SetTrigger("Idle");
+
             }
         }
 
@@ -169,6 +183,8 @@ public class Gun : MonoBehaviour
             hitmarkerUI.color = Color.Lerp(hitmarkerUI.color, CLEARWHITE, Time.deltaTime * 5f);
         }
     }
+
+    
      
     private void OnGunShot()
     {
