@@ -34,7 +34,6 @@ public class AICore : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         playerStat = FindObjectOfType<PlayerStats>().GetComponent<PlayerStats>();
-
     }
 
     private void Start()
@@ -113,6 +112,7 @@ public class AICore : MonoBehaviour
         yield return new WaitForSeconds(enemyData.timeBetweenAttack);
 
     }
+
 
     public IEnumerator StunTimer()
     {

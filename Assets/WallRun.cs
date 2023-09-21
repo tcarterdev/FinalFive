@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class WallRun : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Movement and References")]
     [SerializeField] private Transform orientation;
+    [SerializeField] private AudioSource playerAudioSource;
+    [SerializeField] private AudioClip wallJumpSFX;
 
     [Header("Detection")]
     [SerializeField] private float wallDistance = .5f;
@@ -22,6 +24,8 @@ public class WallRun : MonoBehaviour
     [SerializeField] private float wallRunfovTime;
     [SerializeField] private float camTilt;
     [SerializeField] private float camTiltTime;
+
+    
 
     public float tilt { get; private set; }
 
@@ -41,6 +45,7 @@ public class WallRun : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     void CheckWall()
@@ -97,12 +102,15 @@ public class WallRun : MonoBehaviour
                 Vector3 wallRunJumpDirection = transform.up + leftWallHit.normal;
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(wallRunJumpDirection * wallRunJumpForce * 100, ForceMode.Force);
+                playerAudioSource.PlayOneShot(wallJumpSFX, 0.5f);
+                
             }
             else if (wallRight)
             {
                 Vector3 wallRunJumpDirection = transform.up + rightWallHit.normal;
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(wallRunJumpDirection * wallRunJumpForce * 100, ForceMode.Force);
+                playerAudioSource.PlayOneShot(wallJumpSFX, 0.5f);
             }
         }
     }

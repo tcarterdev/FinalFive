@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private GunData gunData;
     [SerializeField] private Transform gunFirepoint;
     [SerializeField] private TrailRenderer bulletTrail;
+
     private static Gun gun;
 
     [Header("Animations")]
@@ -65,9 +66,10 @@ public class Gun : MonoBehaviour
     private void OnEnable()
     {
 
-        gunAnimator.SetTrigger("Idle");
+        
         gunAudioSource.PlayOneShot(gunData.gunReadyFX, 0.5f);
         gunAnimator.enabled = true;
+
         //Display Current Weapon Name
         gunNameUI.SetText(gunData.name);
     }
@@ -153,16 +155,25 @@ public class Gun : MonoBehaviour
                         Destroy(bloodSpray, 0.2f);
                     }
                     //Stagger shot
+                    // Stagger shot
                     if (this.gameObject.activeInHierarchy && this.gunData.hasStagger == true)
                     {
-                       AICore getStaggered = hitInfo.collider.gameObject.GetComponent<AICore>();
-                        Rigidbody enemyRB = hitInfo.rigidbody.GetComponent<Rigidbody>();
-                        getStaggered.Stagger();
-                        enemyRB.AddForce(Vector3.back * this.gunData.bulletForce);
+                        AICore getStaggered = hitInfo.collider.gameObject.GetComponent<AICore>();
+                        if (getStaggered != null)
+                        {
+                            getStaggered.Stagger();
+                        }
+
+                        Rigidbody enemyRB = hitInfo.rigidbody;
+                        if (enemyRB != null)
+                        {
+                            enemyRB.AddForce(Vector3.back * this.gunData.bulletForce);
+                        }
                     }
 
-                    
-                    
+
+
+
                 }
 
                 gunData.currentAmmo--;

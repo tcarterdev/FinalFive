@@ -1915,7 +1915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2070105400979255245}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2634,7 +2634,7 @@ GameObject:
   - component: {fileID: 1825120730330014363}
   - component: {fileID: 648706460538586559}
   m_Layer: 0
-  m_Name: PlayerMesh
+  m_Name: PlayerController
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2759,7 +2759,7 @@ MonoBehaviour:
   playerAudioSource: {fileID: 3242547443323923659}
   stepRate: 0.5
   stepCooldown: 1
-  moveSpeed: 5500
+  moveSpeed: 2500
   maxSpeed: 20
   grounded: 0
   whatIsGround:
@@ -3791,7 +3791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3867455297863758114}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3827,7 +3827,7 @@ GameObject:
   - component: {fileID: 3867455297946576896}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3984,7 +3984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cfuStatus: PSXEffects v1.18.4 - version ahead?!
   sections: 01010100
-  customRes: {x: 550, y: 257}
+  customRes: {x: 584, y: 321}
   resolutionFactor: 2
   limitFramerate: -1
   skipFrames: 0
@@ -4095,7 +4095,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3867455298439933874}
   - component: {fileID: 3867455298439933884}
-  - component: {fileID: 3867455298439933875}
   m_Layer: 0
   m_Name: WeaponDepthCamera
   m_TagString: Untagged
@@ -4162,51 +4161,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &3867455298439933875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3867455298439933873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b416fbce5a38cc47a3a1e709f95f5e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cfuStatus: PSXEffects v1.18.4 - version ahead?!
-  sections: 01010100
-  customRes: {x: 550, y: 257}
-  resolutionFactor: 2
-  limitFramerate: -1
-  skipFrames: 0
-  affineMapping: 1
-  clampAffine: 0
-  affineBounds: 0
-  polygonalDrawDistance: 0
-  vertexInaccuracy: 30
-  polygonInaccuracy: 2
-  colorDepth: 5
-  scanlines: 0
-  scanlineIntensity: 5
-  ditherTexture: {fileID: 0}
-  dithering: 1
-  ditherThreshold: 1
-  ditherIntensity: 12
-  maxDarkness: 20
-  subtractFade: 0
-  favorRed: 1
-  worldSpaceSnapping: 0
-  postProcessing: 1
-  verticalScanlines: 1
-  shadowIntensity: 0.5
-  downscale: 0
-  snapCamera: 0
-  camInaccuracy: 0.05
-  camSnapping: 0
-  shadowType: 0
-  ditherSky: 0
-  ditherType: 1
 --- !u!1 &3904882872657505338
 GameObject:
   m_ObjectHideFlags: 0
@@ -4529,7 +4483,7 @@ GameObject:
   - component: {fileID: 7963928363206816182}
   - component: {fileID: 2109875606752395821}
   - component: {fileID: 5372950135012100402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4891,7 +4845,7 @@ GameObject:
   - component: {fileID: 6562805867819877116}
   - component: {fileID: 6562805867819877118}
   - component: {fileID: 6562805867819877117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'Gun: Shotgun'
   m_TagString: Shotgun
   m_Icon: {fileID: 0}
@@ -5300,7 +5254,7 @@ GameObject:
   - component: {fileID: 1180822363002147424}
   - component: {fileID: 5475828715288248167}
   - component: {fileID: 9092827127931729631}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trigger&Trigger.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6410,7 +6364,7 @@ GameObject:
   - component: {fileID: 2251965103771201445}
   - component: {fileID: 237415895303489217}
   - component: {fileID: 4113856877173193765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HandGaurd&Barrel.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
