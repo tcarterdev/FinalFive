@@ -172,7 +172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &829979410
 Transform:
   m_ObjectHideFlags: 0
@@ -873,7 +873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.9271176, y: 4.6114287}
+  m_AnchoredPosition: {x: 0.9271176, y: 0.3257146}
   m_SizeDelta: {x: 1082, y: 508}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2070105399661568301
@@ -1414,14 +1414,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070105400142191102}
-  m_LocalRotation: {x: -0, y: -0.60161155, z: -0, w: 0.7987888}
-  m_LocalPosition: {x: -1.93, y: 6.054, z: 0.03}
+  m_LocalRotation: {x: -0, y: -0.62888587, z: -0, w: 0.7774976}
+  m_LocalPosition: {x: -1.586, y: 6.054, z: -0.003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3867455297564960672}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: -73.971, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -77.936, z: 0}
 --- !u!1 &2070105400190954461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2606,7 +2606,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3242547442860902560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.61504114, y: 0.31349993, z: 1.580846}
+  m_LocalPosition: {x: 0.61504114, y: 0.31349993, z: 1.6}
   m_LocalScale: {x: 0.35000002, y: 0.35, z: 0.35000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3381,11 +3381,11 @@ GameObject:
   - component: {fileID: 6410671609220355490}
   m_Layer: 6
   m_Name: 'Gun: MP5'
-  m_TagString: Untagged
+  m_TagString: SMG
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3867455296839392798
 Transform:
   m_ObjectHideFlags: 0
@@ -3394,7 +3394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3867455296839392797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03649115, y: -1.5799999, z: 0.1967714}
+  m_LocalPosition: {x: -0.03649115, y: -0.07999992, z: 0.1967714}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3424,6 +3424,7 @@ MonoBehaviour:
   ammoCountUI: {fileID: 2070105400718550478}
   gunNameUI: {fileID: 8207471825010349321}
   hitmarkerUI: {fileID: 0}
+  enemyHitVFX: {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
 --- !u!82 &3867455296839392799
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3554,11 +3555,11 @@ GameObject:
   - component: {fileID: 8077292597507431355}
   m_Layer: 6
   m_Name: 'Gun: Glock 17'
-  m_TagString: Untagged
+  m_TagString: Pistol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3867455297145538022
 Transform:
   m_ObjectHideFlags: 0
@@ -3598,6 +3599,7 @@ MonoBehaviour:
   ammoCountUI: {fileID: 3242547442584732322}
   gunNameUI: {fileID: 3242547443709578924}
   hitmarkerUI: {fileID: 0}
+  enemyHitVFX: {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
 --- !u!82 &3867455297145538016
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3769,7 +3771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3867455297564960679}
   m_LocalRotation: {x: -0, y: 0.6087613, z: -0, w: 0.7933535}
-  m_LocalPosition: {x: 2.190924, y: -0.71428573, z: 2.145433}
+  m_LocalPosition: {x: 2.190924, y: -5, z: 2.145433}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3982,7 +3984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cfuStatus: PSXEffects v1.18.4 - version ahead?!
   sections: 01010100
-  customRes: {x: 578, y: 268}
+  customRes: {x: 550, y: 257}
   resolutionFactor: 2
   limitFramerate: -1
   skipFrames: 0
@@ -4081,6 +4083,8 @@ MonoBehaviour:
   - {fileID: 0}
   keys: 310000003200000033000000
   switchTime: 0.5
+  selectedWeapon: 0
+  timeSinceLastSwitch: 0
 --- !u!1 &3867455298439933873
 GameObject:
   m_ObjectHideFlags: 0
@@ -4172,7 +4176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cfuStatus: PSXEffects v1.18.4 - version ahead?!
   sections: 01010100
-  customRes: {x: 578, y: 268}
+  customRes: {x: 550, y: 257}
   resolutionFactor: 2
   limitFramerate: -1
   skipFrames: 0
@@ -4889,7 +4893,7 @@ GameObject:
   - component: {fileID: 6562805867819877117}
   m_Layer: 0
   m_Name: 'Gun: Shotgun'
-  m_TagString: Untagged
+  m_TagString: Shotgun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4933,6 +4937,7 @@ MonoBehaviour:
   ammoCountUI: {fileID: 2070105399894575384}
   gunNameUI: {fileID: 2070105399725795776}
   hitmarkerUI: {fileID: 0}
+  enemyHitVFX: {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
 --- !u!82 &6562805867819877118
 AudioSource:
   m_ObjectHideFlags: 0
