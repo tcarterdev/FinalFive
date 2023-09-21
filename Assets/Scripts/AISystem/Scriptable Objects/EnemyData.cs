@@ -26,6 +26,7 @@ public class EnemyData : ScriptableObject
     [Header("Particles")]
     public ParticleSystem takeDamageVFX;
     public ParticleSystem deathVFX;
+    public GameObject staggerParticle;
 
 
 

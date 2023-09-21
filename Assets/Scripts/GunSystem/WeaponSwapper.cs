@@ -13,8 +13,8 @@ public class WeaponSwapper : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float switchTime;
 
-    private int selectedWeapon;
-    private float timeSinceLastSwitch;
+    public int selectedWeapon;
+    public float timeSinceLastSwitch;
 
     private void Start()
     {

@@ -25,4 +25,5 @@ MonoBehaviour:
   enemyAttack: {fileID: 0}
   enemyDeathFX: {fileID: 0}
   takeDamageVFX: {fileID: 198090597041805642, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
-  deathVFX: {fileID: 0}
+  deathVFX: {fileID: 198090597041805642, guid: fdf30b377312cbc479abb1132c11a398, type: 3}
+  staggerParticle: {fileID: 5659291355382750488, guid: b3db7d4d711f94d4796743baa5ba7a38, type: 3}

@@ -19,10 +19,13 @@ public class AICore : MonoBehaviour
     public Transform target;
     [SerializeField] private Health enemyHealth;
     [SerializeField] private PlayerStats playerStat;
+    [SerializeField] private Transform statusTransform;
 
     [Header("Parameters")]
     private float distance;
 
+    [Header("States")]
+    [SerializeField] private bool isStaggered = false;
 
 
 
@@ -43,11 +46,7 @@ public class AICore : MonoBehaviour
     void Update()
     {        
 
-        if (agent.isStopped == true)
-        {
-            animator.SetBool("IsIdle", true);
-            animator.SetBool("IsMoving", false);
-        }
+        
 
         MoveToPlayer();
     }
@@ -57,7 +56,7 @@ public class AICore : MonoBehaviour
         distance = Vector3.Distance(target.position, transform.position);
 
         //if player is within detection raduius move to player.
-        if (distance <= enemyData.detectionRadius)
+        if (distance <= enemyData.detectionRadius && isStaggered == false)
         {
             this.gameObject.transform.LookAt(target);
             agent.SetDestination(target.position);
@@ -68,6 +67,7 @@ public class AICore : MonoBehaviour
         else
         {
             agent.isStopped = true;
+            animator.SetBool("IsIdle", true);
         }
         
     }
@@ -77,7 +77,7 @@ public class AICore : MonoBehaviour
     public void AttackPlayer()
     {
         distance = Vector3.Distance(target.position, transform.position);
-        if (distance <= enemyData.attackRadius)
+        if (distance <= enemyData.attackRadius && isStaggered == false)
         {
             agent.isStopped = true;
             StartCoroutine(AttackTimer());
@@ -88,6 +88,17 @@ public class AICore : MonoBehaviour
             agent.isStopped = false;
         }
     }
+
+    public void Stagger()
+    {
+        isStaggered = true;
+        agent.isStopped = true;
+        animator.SetTrigger("Stagger");
+        GameObject stagger = Instantiate(enemyData.staggerParticle, statusTransform.position, Quaternion.identity);
+        Instantiate(stagger, this.statusTransform, worldPositionStays: false);
+        Destroy(stagger, 2f);
+    }
+
     public IEnumerator AttackTimer()
     {
         animator.SetBool("IsMoving", false);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditorInternal;
 
 public class Gun : MonoBehaviour
 {
@@ -37,7 +38,6 @@ public class Gun : MonoBehaviour
         gunData.reloading = false;
         gunData.currentAmmo = gunData.magSize;
 
-        gunAnimator.SetTrigger("Idle");
 
         //Set Hitmarker to Invisible
         hitmarkerUI.color = CLEARWHITE;
@@ -64,7 +64,8 @@ public class Gun : MonoBehaviour
 
     private void OnEnable()
     {
-        
+
+        gunAnimator.SetTrigger("Idle");
         gunAudioSource.PlayOneShot(gunData.gunReadyFX, 0.5f);
         gunAnimator.enabled = true;
         //Display Current Weapon Name
@@ -132,7 +133,7 @@ public class Gun : MonoBehaviour
                 gunAudioSource.PlayOneShot(gunData.gunShotFX, 0.5f);
 
                 
-                
+                //Normal Shot
                 if (Physics.Raycast(gunFirepoint.position, gunFirepoint.forward, out RaycastHit hitInfo, gunData.maxDistance))
                 {
                     //Spawn Trail
@@ -151,10 +152,18 @@ public class Gun : MonoBehaviour
                         GameObject bloodSpray = Instantiate(enemyHitVFX, hitInfo.point, Quaternion.identity);
                         Destroy(bloodSpray, 0.2f);
                     }
+                    //Stagger shot
+                    if (this.gameObject.activeInHierarchy && this.gunData.hasStagger == true)
+                    {
+                       AICore getStaggered = hitInfo.collider.gameObject.GetComponent<AICore>();
+                        getStaggered.Stagger();
+
+                    }
 
                     
                     
                 }
+
                 gunData.currentAmmo--;
                 timeSinceLastShot = 0;
                 OnGunShot();

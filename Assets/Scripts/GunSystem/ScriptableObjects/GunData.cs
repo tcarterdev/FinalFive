@@ -28,6 +28,9 @@ public class GunData : ScriptableObject
     public float reloadTime;
     public bool reloading;
 
+    [Header("Augments")]
+    public bool hasStagger;
+
     public void Awake()
     {
         //Set Current Ammo to mag size
