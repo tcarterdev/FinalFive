@@ -17,6 +17,7 @@ public class EnemyData : ScriptableObject
     public float attackSpeed;
     public float attackForce;
     public float detectionRadius;
+    public float staggerTime = 2f;
 
     [Header("Audio")]
     public AudioClip enemyIdleFX;

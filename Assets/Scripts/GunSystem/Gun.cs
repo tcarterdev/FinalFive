@@ -156,8 +156,9 @@ public class Gun : MonoBehaviour
                     if (this.gameObject.activeInHierarchy && this.gunData.hasStagger == true)
                     {
                        AICore getStaggered = hitInfo.collider.gameObject.GetComponent<AICore>();
+                        Rigidbody enemyRB = hitInfo.rigidbody.GetComponent<Rigidbody>();
                         getStaggered.Stagger();
-
+                        enemyRB.AddForce(Vector3.back * this.gunData.bulletForce);
                     }
 
                     

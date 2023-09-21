@@ -34,44 +34,53 @@ public class AICore : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         playerStat = FindObjectOfType<PlayerStats>().GetComponent<PlayerStats>();
+
     }
 
     private void Start()
     {
-
-
-
-    }
-
-    void Update()
-    {        
-
+        Idle();
         
 
-        MoveToPlayer();
+    }
+    void Update()
+    {
+        distance = Vector3.Distance(target.position, transform.position);
+        if (!isStaggered)
+        {
+            if (distance <= enemyData.detectionRadius)
+            {
+                MoveToPlayer();
+            }
+            else
+            {
+                Idle();
+            }
+        }
+        else
+        {
+            // Stop the agent when staggered
+            agent.SetDestination(transform.position);
+            Idle();
+        }
     }
 
     private void MoveToPlayer()
     {
-        distance = Vector3.Distance(target.position, transform.position);
-
-        //if player is within detection raduius move to player.
-        if (distance <= enemyData.detectionRadius && isStaggered == false)
-        {
+            agent.isStopped = false;
             this.gameObject.transform.LookAt(target);
             agent.SetDestination(target.position);
             animator.SetBool("IsMoving", true);
             animator.SetBool("IsIdle", false);
-            agent.isStopped = false;
-        }
-        else
-        {
-            agent.isStopped = true;
-            animator.SetBool("IsIdle", true);
-        }
-        
     }
 
+    private void Idle()
+    {
+        agent.isStopped = true;
+        animator.SetBool("IsIdle", true);
+        animator.SetBool("IsMoving", false);
+        agent.SetDestination(this.gameObject.transform.position);
+    }
    
 
     public void AttackPlayer()
@@ -91,12 +100,9 @@ public class AICore : MonoBehaviour
 
     public void Stagger()
     {
-        isStaggered = true;
         agent.isStopped = true;
-        animator.SetTrigger("Stagger");
-        GameObject stagger = Instantiate(enemyData.staggerParticle, statusTransform.position, Quaternion.identity);
-        Instantiate(stagger, this.statusTransform, worldPositionStays: false);
-        Destroy(stagger, 2f);
+        isStaggered = true;
+        StartCoroutine(StunTimer());
     }
 
     public IEnumerator AttackTimer()
@@ -105,6 +111,19 @@ public class AICore : MonoBehaviour
         animator.SetBool("IsIdle", true);
         animator.SetTrigger("Attack");
         yield return new WaitForSeconds(enemyData.timeBetweenAttack);
+
+    }
+
+    public IEnumerator StunTimer()
+    {
+
+        animator.SetTrigger("Stagger");
+        GameObject stagger = Instantiate(enemyData.staggerParticle, statusTransform.position, Quaternion.identity);
+        Instantiate(stagger, this.statusTransform, worldPositionStays: false);
+        Destroy(stagger, 2f);
+        yield return new WaitForSeconds(enemyData.staggerTime);
+        isStaggered = false;
+        Idle();
 
     }
 
