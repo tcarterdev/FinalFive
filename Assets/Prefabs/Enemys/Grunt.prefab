@@ -1676,6 +1676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 3852c2a443dcde349bff29b4c6e4812f, type: 2}
+  aiMelee: {fileID: 192422536}
   animator: {fileID: 3604404392924534688}
   agent: {fileID: 3604404392924534693}
   target: {fileID: 0}
@@ -1843,6 +1844,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621de4e6bcf99804e9463d70d39af207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 3852c2a443dcde349bff29b4c6e4812f, type: 2}
+  aiCore: {fileID: 3604404392924534692}
+  animator: {fileID: 0}
 --- !u!1 &8522360227222579666
 GameObject:
   m_ObjectHideFlags: 0

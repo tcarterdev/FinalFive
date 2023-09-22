@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 20;
     public bool grounded;
     public LayerMask whatIsGround;
+    private bool isMoving = false;
 
     public float counterMovement = 0.175f;
     private float threshold = 0.01f;
@@ -63,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
     }
 
     void Start()
@@ -72,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
 
     private void FixedUpdate()
     {
@@ -83,6 +82,27 @@ public class PlayerMovement : MonoBehaviour
     {
         MyInput();
         Look();
+
+
+        // Check if the player is moving
+        isMoving = Mathf.Abs(x) > 0.1f || Mathf.Abs(y) > 0.1f;
+
+    }
+
+
+    private void PlayFootstepSound()
+    {
+        if (stepCooldown <= 0 && grounded && isMoving)
+        {
+            // Play a random footstep sound from the array
+            int randomIndex = UnityEngine.Random.Range(0, footStepsFX.Length);
+            AudioClip footstepSound = footStepsFX[randomIndex];
+            playerAudioSource.pitch = UnityEngine.Random.Range(0.8f, 1f);
+            playerAudioSource.PlayOneShot(footstepSound);
+
+            // Reset the cooldown
+            stepCooldown = stepRate;
+        }
     }
 
     /// <summary>
@@ -138,6 +158,8 @@ public class PlayerMovement : MonoBehaviour
         isSliding = false;
 
     }
+ 
+
 
     private void Movement()
     {
@@ -159,6 +181,8 @@ public class PlayerMovement : MonoBehaviour
 
         //Set cooldown of for footstep audio
         stepCooldown -= Time.deltaTime;
+
+
 
 
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
@@ -195,6 +219,9 @@ public class PlayerMovement : MonoBehaviour
         //Apply forces to move player
         rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
         rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
+
+        PlayFootstepSound();
+
     }
 
     private void Jump()
