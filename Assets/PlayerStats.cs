@@ -6,8 +6,8 @@ using TMPro;
 public class PlayerStats : MonoBehaviour
 {
 
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
     public TMP_Text playerHealthUI;
     // Start is called before the first frame update
     void Start()
@@ -19,5 +19,12 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         playerHealthUI.SetText(currentHealth + "%");
+
+        
+    }
+
+    public void TakeDamageToPlayer(float damage)
+    {
+        currentHealth -= damage;
     }
 }

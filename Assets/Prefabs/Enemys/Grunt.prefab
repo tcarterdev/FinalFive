@@ -1604,6 +1604,7 @@ GameObject:
   - component: {fileID: 3604404392924534693}
   - component: {fileID: 2017447987}
   - component: {fileID: 8668204936053647643}
+  - component: {fileID: 192422536}
   m_Layer: 0
   m_Name: Grunt
   m_TagString: Enemy
@@ -1681,7 +1682,6 @@ MonoBehaviour:
   enemyHealth: {fileID: 3604404392924534694}
   playerStat: {fileID: 0}
   statusTransform: {fileID: 724890097}
-  audioSource: {fileID: 8668204936053647643}
   isStaggered: 0
 --- !u!136 &3604404392924534695
 CapsuleCollider:
@@ -1707,10 +1707,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 15
-  m_Acceleration: 60
+  m_Speed: 5
+  m_Acceleration: 25
   avoidancePriority: 50
-  m_AngularSpeed: 360
+  m_AngularSpeed: 50
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
@@ -1747,7 +1747,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1831,6 +1831,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &192422536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047535382055769952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621de4e6bcf99804e9463d70d39af207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8522360227222579666
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class EnemyData : ScriptableObject
     public float damage;
     public float attackRadius;
     public float timeBetweenAttack;
+    public float timeBetweenAttackCD;
     public float attackSpeed;
     public float attackForce;
     public float detectionRadius;
@@ -32,11 +33,7 @@ public class EnemyData : ScriptableObject
 
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()

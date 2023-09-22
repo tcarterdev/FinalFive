@@ -14,6 +14,7 @@ public class AICore : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private EnemyData enemyData;
+    [SerializeField] private AIMelee aiMelee;
     [SerializeField] private Animator animator;
     [SerializeField] private NavMeshAgent agent;
     public Transform target;
@@ -23,6 +24,7 @@ public class AICore : MonoBehaviour
 
     [Header("Parameters")]
     private float distance;
+    private float attackRadius;
 
     [Header("States")]
     [SerializeField] private bool isStaggered = false;
@@ -34,6 +36,13 @@ public class AICore : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         playerStat = FindObjectOfType<PlayerStats>().GetComponent<PlayerStats>();
+        aiMelee = GetComponent<AIMelee>();
+
+      
+            enemyData.timeBetweenAttack = 3;
+            enemyData.timeBetweenAttackCD = 3;
+        
+
     }
 
     private void Start()
@@ -50,6 +59,18 @@ public class AICore : MonoBehaviour
             if (distance <= enemyData.detectionRadius)
             {
                 MoveToPlayer();
+
+                if (enemyData.timeBetweenAttack > 0 && isStaggered == false)
+                {
+                    enemyData.timeBetweenAttack -= Time.deltaTime;
+                }
+                else
+                {
+                    enemyData.timeBetweenAttack = enemyData.timeBetweenAttackCD;
+                    aiMelee.AttackTarget();
+                    animator.SetBool("IsIdle", true);
+
+                }
             }
             else
             {
@@ -82,35 +103,13 @@ public class AICore : MonoBehaviour
     }
    
 
-    public void AttackPlayer()
-    {
-        distance = Vector3.Distance(target.position, transform.position);
-        if (distance <= enemyData.attackRadius && isStaggered == false)
-        {
-            agent.isStopped = true;
-            StartCoroutine(AttackTimer());
-
-        }
-        else
-        {
-            agent.isStopped = false;
-        }
-    }
+  
 
     public void Stagger()
     {
         agent.isStopped = true;
         isStaggered = true;
         StartCoroutine(StunTimer());
-    }
-
-    public IEnumerator AttackTimer()
-    {
-        animator.SetBool("IsMoving", false);
-        animator.SetBool("IsIdle", true);
-        animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(enemyData.timeBetweenAttack);
-
     }
 
 

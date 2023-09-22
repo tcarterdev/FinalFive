@@ -17,7 +17,8 @@ MonoBehaviour:
   isMelee: 0
   damage: 15
   attackRadius: 3.82
-  timeBetweenAttack: 0.3
+  timeBetweenAttack: 0.51660377
+  timeBetweenAttackCD: 3
   attackSpeed: 0
   attackForce: 2
   detectionRadius: 20
