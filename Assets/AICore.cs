@@ -126,6 +126,15 @@ public class AICore : MonoBehaviour
 
     }
 
+    public IEnumerator Death()
+    {
+        animator.SetTrigger("Death");
+        agent.isStopped = true;
+        enemyData.detectionRadius = 0.01f;
+        yield return new WaitForSeconds(3);
+        Destroy(this.gameObject);
+    }
+
     private void OnDrawGizmos()
     {
         //Debug: Detection Radius

@@ -47,6 +47,8 @@ public class Gun : MonoBehaviour
         PlayerShoot.shootInput += Shoot;
 
         PlayerShoot.reloadInput += StartReload;
+
+        PlayerShoot.flashlightInput += ToggleFlash;
     }
 
     public void Awake()
@@ -80,6 +82,11 @@ public class Gun : MonoBehaviour
         {
             StartCoroutine(Reload());
         }
+    }
+
+    public void ToggleFlash()
+    {
+        
     }
 
     private IEnumerator Reload()
@@ -120,71 +127,109 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        if (gunData.currentAmmo > 0)
+        if (gunData.isHitScan)
         {
-            if (CanShoot())
+            if (gunData.currentAmmo > 0)
             {
-                gunAnimator.SetTrigger("Fire");
-
-                //Muzzle Flash
-                GameObject muzzleflash = Instantiate(gunData.muzzleFlash, gunFirepoint, worldPositionStays: false);
-                Destroy(muzzleflash, 0.1f);
-                TrailRenderer trail = Instantiate(bulletTrail, gunFirepoint.position, Quaternion.identity);
-                Destroy(trail, 1f);
-                gunAudioSource.pitch = Random.Range(0.8f, 1f);
-                gunAudioSource.PlayOneShot(gunData.gunShotFX, 0.5f);
-
-                
-                //Normal Shot
-                if (Physics.Raycast(gunFirepoint.position, gunFirepoint.forward, out RaycastHit hitInfo, gunData.maxDistance))
+                if (CanShoot())
                 {
-                    //Spawn Trail
-                    StartCoroutine(SpawnTrail(trail, hitInfo));
-                    //take damage
-                    IDamageable damageable = hitInfo.transform.GetComponent<IDamageable>();
-                    damageable?.TakeDamage(gunData.damage);
+                    gunAnimator.SetTrigger("Fire");
 
-                    //If Hit an Enemy - Provide HitMarker Feedback
-                    if (hitInfo.collider.gameObject.CompareTag("Enemy"))
-                    {
-                        hitmarkerUI.color = Color.white;
-                        gunAudioSource.PlayOneShot(hitmarkerFX, 1f);
-                        hitmarkerTimer = 0.5f;
+                    //Muzzle Flash
+                    GameObject muzzleflash = Instantiate(gunData.muzzleFlash, gunFirepoint, worldPositionStays: false);
+                    Destroy(muzzleflash, 0.1f);
+                    TrailRenderer trail = Instantiate(bulletTrail, gunFirepoint.position, Quaternion.identity);
+                    Destroy(trail, 1f);
+                    gunAudioSource.pitch = Random.Range(0.8f, 1f);
+                    gunAudioSource.PlayOneShot(gunData.gunShotFX, 0.5f);
 
-                        GameObject bloodSpray = Instantiate(enemyHitVFX, hitInfo.point, Quaternion.identity);
-                        Destroy(bloodSpray, 0.2f);
-                    }
-                    //Stagger shot
-                    // Stagger shot
-                    if (this.gameObject.activeInHierarchy && this.gunData.hasStagger == true)
+
+                    //Normal Shot
+                    if (Physics.Raycast(gunFirepoint.position, gunFirepoint.forward, out RaycastHit hitInfo, gunData.maxDistance))
                     {
-                        AICore getStaggered = hitInfo.collider.gameObject.GetComponent<AICore>();
-                        if (getStaggered != null)
+                        //Spawn Trail
+                        StartCoroutine(SpawnTrail(trail, hitInfo));
+                        //take damage
+                        IDamageable damageable = hitInfo.transform.GetComponent<IDamageable>();
+                        damageable?.TakeDamage(gunData.damage);
+
+                        //If Hit an Enemy - Provide HitMarker Feedback
+                        if (hitInfo.collider.gameObject.CompareTag("Enemy"))
                         {
-                            getStaggered.Stagger();
+                            hitmarkerUI.color = Color.white;
+                            gunAudioSource.PlayOneShot(hitmarkerFX, 1f);
+                            hitmarkerTimer = 0.5f;
+
+                            GameObject bloodSpray = Instantiate(enemyHitVFX, hitInfo.point, Quaternion.identity);
+                            Destroy(bloodSpray, 0.2f);
+                        }
+                        //Stagger shot
+                        // Stagger shot
+                        if (this.gameObject.activeInHierarchy && this.gunData.hasStagger == true)
+                        {
+                            AICore getStaggered = hitInfo.collider.gameObject.GetComponent<AICore>();
+                            if (getStaggered != null)
+                            {
+                                getStaggered.Stagger();
+                            }
+
+                            Rigidbody enemyRB = hitInfo.rigidbody;
+                            if (enemyRB != null)
+                            {
+                                enemyRB.AddForce(Vector3.back * this.gunData.bulletForce);
+                            }
                         }
 
-                        Rigidbody enemyRB = hitInfo.rigidbody;
-                        if (enemyRB != null)
-                        {
-                            enemyRB.AddForce(Vector3.back * this.gunData.bulletForce);
-                        }
+
+
+
                     }
 
-
-
+                    gunData.currentAmmo--;
+                    timeSinceLastShot = 0;
+                    OnGunShot();
+                    gunAnimator.SetTrigger("FireEnd");
+                    gunAnimator.SetTrigger("Idle");
 
                 }
-
-                gunData.currentAmmo--;
-                timeSinceLastShot = 0;
-                OnGunShot();
-                gunAnimator.SetTrigger("FireEnd");
-                gunAnimator.SetTrigger("Idle");
-
             }
         }
 
+        if (gunData.isProjectile)
+        {
+            if (gunData.currentAmmo > 0)
+            {
+                if (CanShoot())
+                {
+                    gunAnimator.SetTrigger("Fire");
+
+                    //Muzzle Flash
+                    GameObject muzzleflash = Instantiate(gunData.muzzleFlash, gunFirepoint, worldPositionStays: false);
+                    Destroy(muzzleflash, 0.1f);
+                    TrailRenderer trail = Instantiate(bulletTrail, gunFirepoint.position, Quaternion.identity);
+                    Destroy(trail, 1f);
+                    gunAudioSource.pitch = Random.Range(0.8f, 1f);
+                    gunAudioSource.PlayOneShot(gunData.gunShotFX, 0.5f);
+
+                    FireProjectile();
+
+                    }
+
+                    gunData.currentAmmo--;
+                    timeSinceLastShot = 0;
+                    OnGunShot();
+                    gunAnimator.SetTrigger("FireEnd");
+                    gunAnimator.SetTrigger("Idle");
+
+                }
+            }
+        
+
+    }
+
+    private void FireProjectile()
+    {
+        Instantiate(gunData.projectile, gunFirepoint.position, Quaternion.identity);
     }
 
     private void Update()

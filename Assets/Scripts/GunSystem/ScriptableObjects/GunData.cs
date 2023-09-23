@@ -8,11 +8,14 @@ public class GunData : ScriptableObject
     [Header("Info")]
     public new string name;
     public string weaponType;
+    public bool isHitScan;
+    public bool isProjectile;
 
     [Header("Shooting")]
     public float damage;
     public float maxDistance;
     public float bulletForce;
+    public GameObject projectile;
     [Header("Audio")]
     public AudioClip gunShotFX;
     public AudioClip gunReloadFX;

@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Passenger Seat
   weaponType: Shotgun
+  isHitScan: 1
+  isProjectile: 0
   damage: 50
   maxDistance: 20
   bulletForce: 500
+  projectile: {fileID: 0}
   gunShotFX: {fileID: 8300000, guid: 3681275c14cd2d24ca18fcd717555dd2, type: 3}
   gunReloadFX: {fileID: 8300000, guid: f5f6e63f29fde82439e23eb9f7cbfd15, type: 3}
   gunReadyFX: {fileID: 8300000, guid: e4427f260cadb164dba505a6b6795bbd, type: 3}

@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hush..
   weaponType: Pistol
+  isHitScan: 1
+  isProjectile: 0
   damage: 20
   maxDistance: 100
   bulletForce: 15
+  projectile: {fileID: 0}
   gunShotFX: {fileID: 8300000, guid: 1edad51ae5bdb044e8d11170a80fc1e4, type: 3}
   gunReloadFX: {fileID: 8300000, guid: 0a5d14d7a91ef6b419bbd5f70673fb74, type: 3}
   gunReadyFX: {fileID: 8300000, guid: 7938c5dc6a744b44194ac9a95f4b5cb3, type: 3}
@@ -26,3 +29,4 @@ MonoBehaviour:
   fireRate: 250
   reloadTime: 1.5
   reloading: 0
+  hasStagger: 0

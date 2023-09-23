@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
+    [Header("Player Progression")]
+    public bool hasPistol;
+    public bool hasSMG;
+    public bool hasShotgun;
     [Header("Timer")]
     public float timeLeft;
     public bool timerOn = false;
