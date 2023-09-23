@@ -18,6 +18,7 @@ public class AICore : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private AudioSource enemyAudioSource;
+    [SerializeField] private bool hasPlayedAudio;
 
 
     public Transform target;
@@ -28,6 +29,8 @@ public class AICore : MonoBehaviour
     [Header("Parameters")]
     private float distance;
     private float attackRadius;
+
+    private float initialDetectionRadius;
 
     [Header("States")]
     [SerializeField] private bool isStaggered = false;
@@ -45,8 +48,8 @@ public class AICore : MonoBehaviour
       
             enemyData.timeBetweenAttack = 3;
             enemyData.timeBetweenAttackCD = 3;
-        
 
+        initialDetectionRadius = enemyData.detectionRadius;
     }
 
     private void Start()
@@ -64,6 +67,12 @@ public class AICore : MonoBehaviour
             {
                 MoveToPlayer();
 
+                if (!hasPlayedAudio)
+                {
+                    enemyAudioSource.PlayOneShot(enemyData.enemyDetectFX[UnityEngine.Random.Range(0, enemyData.enemyDetectFX.Length)]);
+                    hasPlayedAudio = true;
+                }
+
                 if (enemyData.timeBetweenAttack > 0 && isStaggered == false)
                 {
                     enemyData.timeBetweenAttack -= Time.deltaTime;
@@ -78,6 +87,7 @@ public class AICore : MonoBehaviour
             }
             else
             {
+                hasPlayedAudio = false;
                 Idle();
             }
         }
@@ -139,11 +149,17 @@ public class AICore : MonoBehaviour
     {
         animator.SetTrigger("Death");
         agent.isStopped = true;
+
+        // Set the local detection radius to 0.01 for the current game object
         enemyData.detectionRadius = 0.01f;
+
         CapsuleCollider ccolider = this.gameObject.GetComponent<CapsuleCollider>();
         ccolider.enabled = false;
+
         enemyAudioSource.PlayOneShot(enemyData.enemyDeathFX, 0.5f);
         yield return new WaitForSeconds(3);
+        // Reset the detection radius to its initial value
+        enemyData.detectionRadius = initialDetectionRadius;
         Destroy(this.gameObject);
     }
 
