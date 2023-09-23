@@ -127,7 +127,7 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        if (gunData.isHitScan)
+        if (gunData.isHitScan && gunData.isProjectile == false)
         {
             if (gunData.currentAmmo > 0)
             {
@@ -138,8 +138,10 @@ public class Gun : MonoBehaviour
                     //Muzzle Flash
                     GameObject muzzleflash = Instantiate(gunData.muzzleFlash, gunFirepoint, worldPositionStays: false);
                     Destroy(muzzleflash, 0.1f);
+
                     TrailRenderer trail = Instantiate(bulletTrail, gunFirepoint.position, Quaternion.identity);
                     Destroy(trail, 1f);
+
                     gunAudioSource.pitch = Random.Range(0.8f, 1f);
                     gunAudioSource.PlayOneShot(gunData.gunShotFX, 0.5f);
 
@@ -195,7 +197,7 @@ public class Gun : MonoBehaviour
             }
         }
 
-        if (gunData.isProjectile)
+        if (gunData.isProjectile == true && !gunData.isHitScan)
         {
             if (gunData.currentAmmo > 0)
             {
@@ -213,15 +215,17 @@ public class Gun : MonoBehaviour
 
                     FireProjectile();
 
-                    }
-
                     gunData.currentAmmo--;
                     timeSinceLastShot = 0;
                     OnGunShot();
                     gunAnimator.SetTrigger("FireEnd");
                     gunAnimator.SetTrigger("Idle");
 
+
                 }
+
+
+            }
             }
         
 
@@ -229,8 +233,9 @@ public class Gun : MonoBehaviour
 
     private void FireProjectile()
     {
-        Instantiate(gunData.projectile, gunFirepoint.position, Quaternion.identity);
-    }
+        GameObject projectile = Instantiate(gunData.projectile, gunFirepoint.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody>().AddForce(transform.forward * gunData.bulletForce);
+        }
 
     private void Update()
     {

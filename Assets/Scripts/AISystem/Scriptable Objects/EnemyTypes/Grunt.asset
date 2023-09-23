@@ -17,15 +17,18 @@ MonoBehaviour:
   isMelee: 0
   damage: 15
   attackRadius: 3.82
-  timeBetweenAttack: 0.51660377
+  timeBetweenAttack: 3
   timeBetweenAttackCD: 3
   attackSpeed: 0
   attackForce: 2
-  detectionRadius: 20
+  detectionRadius: 10
   staggerTime: 2
   enemyIdleFX: {fileID: 8300000, guid: 1c4210a733f020343997d5db1e5d9c2b, type: 3}
+  enemyDetectFX:
+  - {fileID: 8300000, guid: b4b4a5a0ea4789f4b98bf76196e7aff2, type: 3}
+  - {fileID: 8300000, guid: 4e527fe4d5179f74ca3dd566a34510fa, type: 3}
   enemyAttack: {fileID: 0}
-  enemyDeathFX: {fileID: 0}
+  enemyDeathFX: {fileID: 8300000, guid: de8aa0d316dc80545bbb05e64bcb634b, type: 3}
   takeDamageVFX: {fileID: 198090597041805642, guid: d5f26854a8904624c8073139cd2eb346, type: 3}
   deathVFX: {fileID: 198090597041805642, guid: fdf30b377312cbc479abb1132c11a398, type: 3}
   staggerParticle: {fileID: 5659291355382750488, guid: b3db7d4d711f94d4796743baa5ba7a38, type: 3}

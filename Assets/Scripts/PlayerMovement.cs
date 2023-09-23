@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, footStepsFX.Length);
             AudioClip footstepSound = footStepsFX[randomIndex];
             playerAudioSource.pitch = UnityEngine.Random.Range(0.8f, 1f);
-            playerAudioSource.PlayOneShot(footstepSound);
+            playerAudioSource.PlayOneShot(footstepSound, 0.1f);
 
             // Reset the cooldown
             stepCooldown = stepRate;

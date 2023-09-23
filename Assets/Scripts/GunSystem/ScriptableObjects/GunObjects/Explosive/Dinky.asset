@@ -17,16 +17,16 @@ MonoBehaviour:
   isHitScan: 0
   isProjectile: 1
   damage: 50
-  maxDistance: 0
-  bulletForce: 200
-  projectile: {fileID: 0}
-  gunShotFX: {fileID: 0}
-  gunReloadFX: {fileID: 0}
+  maxDistance: 500
+  bulletForce: 5000
+  projectile: {fileID: 3977835628985603148, guid: a4764801077523147a54f81e07f6bda4, type: 3}
+  gunShotFX: {fileID: 8300000, guid: bd24c62d3082ab54d95d5f83ba12d9d5, type: 3}
+  gunReloadFX: {fileID: 8300000, guid: 01b46d96880c3994a8710ae8ff0d0a31, type: 3}
   gunReadyFX: {fileID: 0}
-  muzzleFlash: {fileID: 0}
-  currentAmmo: 0
+  muzzleFlash: {fileID: 100008, guid: 7b4c09739930d43458b94e59aa06933a, type: 3}
+  currentAmmo: 6
   magSize: 6
-  fireRate: 1
-  reloadTime: 5
+  fireRate: 40
+  reloadTime: 2.5
   reloading: 0
   hasStagger: 0

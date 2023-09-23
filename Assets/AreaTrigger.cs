@@ -10,6 +10,9 @@ public class AreaTrigger : MonoBehaviour
     public float textScreenDuration;
     public float textFadeDuration;
 
+    public AudioSource triggerAudioSource;
+    public AudioClip triggerAudioClip;
+
     public Color CLEARWHITE;
 
     public void Start()
@@ -22,6 +25,7 @@ public class AreaTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            triggerAudioSource.PlayOneShot(triggerAudioClip, 0.5f);
             StartCoroutine(TextFade());
         }
     }
@@ -37,11 +41,13 @@ public class AreaTrigger : MonoBehaviour
         while (timer < textFadeDuration)
         {
             float alpha = Mathf.Lerp(0f, 1f, timer / textFadeDuration);
+            
             AreaTriggerUIName.color = new Color(1, 1, 1, alpha);
             timer += Time.deltaTime;
             yield return null;
         }
 
+        
         // Wait for the text screen duration
         yield return new WaitForSeconds(textScreenDuration);
 

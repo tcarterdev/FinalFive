@@ -22,6 +22,7 @@ public class EnemyData : ScriptableObject
 
     [Header("Audio")]
     public AudioClip enemyIdleFX;
+    public AudioClip[] enemyDetectFX;
     public AudioClip enemyAttack;
     public AudioClip enemyDeathFX;
 
@@ -32,7 +33,10 @@ public class EnemyData : ScriptableObject
 
 
 
-
+    void Start()
+    {
+        
+    }
     
 
     // Update is called once per frame

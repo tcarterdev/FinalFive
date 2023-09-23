@@ -17,6 +17,9 @@ public class AICore : MonoBehaviour
     [SerializeField] private AIMelee aiMelee;
     [SerializeField] private Animator animator;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private AudioSource enemyAudioSource;
+
+
     public Transform target;
     [SerializeField] private Health enemyHealth;
     [SerializeField] private PlayerStats playerStat;
@@ -37,6 +40,7 @@ public class AICore : MonoBehaviour
         animator = GetComponent<Animator>();
         playerStat = FindObjectOfType<PlayerStats>().GetComponent<PlayerStats>();
         aiMelee = GetComponent<AIMelee>();
+        enemyAudioSource = GetComponent<AudioSource>();
 
       
             enemyData.timeBetweenAttack = 3;
@@ -94,6 +98,11 @@ public class AICore : MonoBehaviour
             animator.SetBool("IsIdle", false);
     }
 
+    private void AggroSFX()
+    {
+
+    }
+
     private void Idle()
     {
         agent.isStopped = true;
@@ -131,6 +140,9 @@ public class AICore : MonoBehaviour
         animator.SetTrigger("Death");
         agent.isStopped = true;
         enemyData.detectionRadius = 0.01f;
+        CapsuleCollider ccolider = this.gameObject.GetComponent<CapsuleCollider>();
+        ccolider.enabled = false;
+        enemyAudioSource.PlayOneShot(enemyData.enemyDeathFX, 0.5f);
         yield return new WaitForSeconds(3);
         Destroy(this.gameObject);
     }
