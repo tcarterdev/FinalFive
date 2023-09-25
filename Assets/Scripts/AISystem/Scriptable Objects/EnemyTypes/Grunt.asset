@@ -17,11 +17,11 @@ MonoBehaviour:
   isMelee: 0
   damage: 15
   attackRadius: 3.82
-  timeBetweenAttack: 0.33289903
+  timeBetweenAttack: 0.037955023
   timeBetweenAttackCD: 3
   attackSpeed: 0
   attackForce: 2
-  detectionRadius: 0.01
+  detectionRadius: 15
   staggerTime: 2
   enemyIdleFX: {fileID: 8300000, guid: 1c4210a733f020343997d5db1e5d9c2b, type: 3}
   enemyDetectFX:
